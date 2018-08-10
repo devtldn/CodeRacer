@@ -5,6 +5,6 @@ const codeRacerSchema = new Schema({
 
 });
 
-const Racer = mongoose.model("Racer", nytreactSchema);
+const Racer = mongoose.model("Racer", codeRacerSchema);
 
 module.exports = Racer;
