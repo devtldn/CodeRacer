@@ -20,7 +20,7 @@ app.use(routes);
 //     res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nytreact");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/coderacer");
 
 app.listen(PORT, () => {
     console.log(`CodeRacer is now running on PORT: ${PORT}`);
