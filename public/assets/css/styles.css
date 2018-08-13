@@ -2,3 +2,7 @@
     color: red;
     font-size: 30px;
 }
+
+#user-input{
+    display:none;
+}
