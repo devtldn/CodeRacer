@@ -10,15 +10,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("./assets"));
+    app.use(express.static("./public"));
 }
 
 const routes = require("./routes/api.js");
 
-app.use(routes);
+app.use(routes);    
+app.use(express.static("public"));
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./assets/html/index.html"));
+    res.sendFile(path.join(__dirname, "./public/index.html"));
 });
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/coderacer", { useNewUrlParser: true }).then(() => {

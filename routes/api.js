@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Racer = require('../models/racer.js');
 
+
 router.post("/api/racer", function (req, res) {
     Racer.create(req.body).then((doc) => {
         res.json(doc);
