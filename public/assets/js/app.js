@@ -18,17 +18,21 @@ document.addEventListener("DOMContentLoaded", function(event){
     }
 
     let userArr = [];
-    let userStr = "";
     input.oninput = function(event) {
-        userStr.join(event.data);
-        console.log(userStr);
         event.preventDefault();
-        if (event.data === null || event.data === 46) {
+        console.log(userArr);
+        if (event.data === null) {
             userArr.splice(-1,1);
+            console.log(userArr);
         } else if (event.data === " ") {
-            if (userArr[0] === testArr[0]) {
+            if (userArr.join('') === testArr[0].toString()) {
                 testArr.shift();
+                userArr=[];
+                event.currentTarget.value = ""
+                console.log("TestArr", testArr[0]);
+                console.log("UserArr", userArr);
             } else {
+                userArr.push(event.data);
                 console.log('Not Correct');
             } 
         } else {
