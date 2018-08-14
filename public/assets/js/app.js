@@ -23,44 +23,49 @@ document.addEventListener("DOMContentLoaded", function(event){
         event.preventDefault();
         if (event.data === null) {
             userArr.splice(-1,1);
-            // validate();
         } else if (event.data === " ") {
             if (userArr.join('') === testArr[0].toString()) {
+
+                validate(userArr.join(''), testArr[0].toString());
+
                 testArr.shift();
-                validate();
                 userArr=[];
                 event.currentTarget.value = ""
+
                 console.log("Correct")
-                // console.log("TestArr", testArr[0]);
-                // console.log("UserArr", userArr);
             } else {
+
                 userArr.push(event.data);
+
+                validate(userArr.join(''), testArr[0].toString());
+                
                 console.log('Not Correct');
             } 
         } else {
-            validate();
-
             userArr.push(event.data);
             console.log(userArr)
         }
     }
   
-    function validate() {
-        let result;
-
-        for(i=0; i<testArr[0].split('').length; i++) {
-            let testData = document.getElementById(`test-data${[i]}`); 
-            if (userArr.join('') === testData) {
-                console.log(testData);
-                console.log('Sure');
-                result =testData.setAttribute("style", "color:green;");
-            } else {
-                console.log(testData);
-                console.log("No");
-                result = testData.setAttribute("style", "color:red;");
-            }  
-            return result;  
+    function validate(user, test) {
+        if (user === test) {
+            console.log('yes');
+        } else {
+            console.log('no')
         }
+        // for(i=0; i<testArr.length; i++) {
+        //     let testData = document.getElementById(`test-data${[i]}`); 
+
+        //     if (userArr.join('') === testData.innerText) {
+        //         console.log(testData);
+        //         console.log('Sure');
+        //         testData.setAttribute("style", "color:green;");
+        //     } else {
+        //         console.log(testData);
+        //         console.log("No");
+        //         testData.setAttribute("style", "color:red;");
+        //     }  
+        // }
     }
 
 });
