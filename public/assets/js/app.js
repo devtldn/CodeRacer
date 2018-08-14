@@ -9,23 +9,25 @@ document.addEventListener("DOMContentLoaded", function(event){
         console.log('clickity click')
         axios.get('/api/racer').then(res => {
             testArr = res.data[0].text.split(' ');
+            for (i=0;i<testArr.length;i++){
+                container.innerHTML+=`<span id="test-data${[i]}">${testArr[i]}</span> `
+            }
             console.log(testArr);
-            container.innerHTML+=`<p>${res.data[0].text}</p>`
             input.setAttribute("style", "display:block;");
             button.setAttribute("style", "display:none;");
         })
     }
-
+    
     let userArr = [];
     input.oninput = function(event) {
         event.preventDefault();
-        console.log(userArr);
         if (event.data === null) {
             userArr.splice(-1,1);
-            console.log(userArr);
+            // validate();
         } else if (event.data === " ") {
             if (userArr.join('') === testArr[0].toString()) {
                 testArr.shift();
+                validate();
                 userArr=[];
                 event.currentTarget.value = ""
                 console.log("Correct")
@@ -36,11 +38,29 @@ document.addEventListener("DOMContentLoaded", function(event){
                 console.log('Not Correct');
             } 
         } else {
+            validate();
+
             userArr.push(event.data);
+            console.log(userArr)
         }
-        console.log(userArr);
     }
   
-  
+    function validate() {
+        let result;
+
+        for(i=0; i<testArr[0].split('').length; i++) {
+            let testData = document.getElementById(`test-data${[i]}`); 
+            if (userArr.join('') === testData) {
+                console.log(testData);
+                console.log('Sure');
+                result =testData.setAttribute("style", "color:green;");
+            } else {
+                console.log(testData);
+                console.log("No");
+                result = testData.setAttribute("style", "color:red;");
+            }  
+            return result;  
+        }
+    }
 
 });
