@@ -48,18 +48,19 @@ document.addEventListener("DOMContentLoaded", function(event){
     function validate() {
         let result;
 
-        for(i=0; i<testArr[0].split('').length; i++) {
-            let testData = document.getElementById(`test-data${[i]}`); 
-            if (userArr.join('') === testData) {
-                console.log(testData);
-                console.log('Sure');
-                result =testData.setAttribute("style", "color:green;");
-            } else {
-                console.log(testData);
-                console.log("No");
-                result = testData.setAttribute("style", "color:red;");
-            }  
-            return result;  
+        for (let i = 0; i < testArr[i].split('').length; i++) {
+            let testData = document.getElementById(`test-data${[i]}`).textContent;
+
+            console.log("THIS IS testArr: ", testArr[i]);
+
+            // if (userArr.join('') === testData) {
+            //     console.log("THIS IS testData (if): ", testData);
+            //     result = testData.setAttribute("style", "color:green;");
+            // } else {
+            //     console.log("THIS IS testData (else): ", testData);
+            //     result = testData.setAttribute("style", "color:red;");
+            // }  
+            // return result;  
         }
     }
 
