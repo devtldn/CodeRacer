@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function(event){
     var button = document.getElementById("button");
     var container = document.getElementById("main-container");
@@ -29,8 +28,9 @@ document.addEventListener("DOMContentLoaded", function(event){
                 testArr.shift();
                 userArr=[];
                 event.currentTarget.value = ""
-                console.log("TestArr", testArr[0]);
-                console.log("UserArr", userArr);
+                console.log("Correct")
+                // console.log("TestArr", testArr[0]);
+                // console.log("UserArr", userArr);
             } else {
                 userArr.push(event.data);
                 console.log('Not Correct');
